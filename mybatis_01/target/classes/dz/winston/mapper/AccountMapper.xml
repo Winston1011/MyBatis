@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace通常设置为文件所在包+文件名的形式-->
+<mapper namespace="dz.winston.mapper.AccountMapper">
+    <!--  insert标签  表示执行添加操作，id是实际调用Mybatis方法时需要用到的参数，parameterType是调用对应方法时参数的数据类型-->
+    <insert id="save" parameterType="dz.winston.entity.Account">
+        insert into t_account(username,password,age) values(#{username},#{password},#{age})
+    </insert>
+
+</mapper>

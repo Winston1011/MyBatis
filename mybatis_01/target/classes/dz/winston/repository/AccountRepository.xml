@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dz.winston.repository.AccountRepository">
+    <insert id="save" parameterType="dz.winston.entity.Account">
+        insert into t_account(username,password,age) values(#{username},#{password},#{age})
+    </insert>
+
+    <update id="update" parameterType="dz.winston.entity.Account">
+        update t_account set username = #{username},password= #{password},age = #{age} where id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        delete from t_account where id = #{id}
+    </delete>
+
+    <select id="findAll" resultType="dz.winston.entity.Account">
+        select * from t_account
+    </select>
+
+    <select id="findById" parameterType="long" resultType="dz.winston.entity.Account">
+        select * from t_account where id = #{id}
+    </select>
+
+    <select id="findByName" parameterType="java.lang.String" resultType="dz.winston.entity.Account">
+        select * from t_account where username = #{username}
+    </select>
+
+    <select id="findByNameAndAge" resultType="dz.winston.entity.Account">
+        select * from t_account where username = #{param1} and age = #{param2}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from t_account;
+    </select>
+
+    <select id="findNameById" parameterType="int" resultType="java.lang.String">
+        select username from t_account where id = #{id};
+    </select>
+</mapper>
